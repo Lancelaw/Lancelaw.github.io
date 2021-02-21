@@ -173,75 +173,9 @@
         <h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><blockquote>
 <p>Spring是一个轻量级框架。它可以被视为框架的框架，因为它提供了对各种框架的支持，如Struts、Hibernate、MyBatis、EJB等。从更广泛的意义上讲，框架可以被定义为我们在其中找到各种技术问题的解决方案的结构。</p>
 </blockquote>
-<h5 id="IoC-容器"><a href="#IoC-容器" class="headerlink" title="IoC 容器"></a>IoC 容器</h5><p>IoC容器负责实例化、配置和组装对象。IoC容器从XML文件获取信息并相应工作。</p>
-<p>IoC容器执行的主要任务是:要实例化应用程序类，配置对象以组装对象之间的依赖关系，有两种类型的IoC容器。它们是:</p>
-<ul>
-<li><p>BeanFactory</p>
-</li>
-<li><p>ApplicationContext</p>
-</li>
-</ul>
-<h5 id="Dependency-Lookup"><a href="#Dependency-Lookup" class="headerlink" title="Dependency Lookup"></a>Dependency Lookup</h5><blockquote>
-<p>依赖查找是一种按需获取资源的方法。可以通过多种方式获取资源</p>
-</blockquote>
-<p>例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A obj = <span class="keyword">new</span> AImpl();</span><br></pre></td></tr></table></figure>
-<p>依赖查找的问题</p>
-<ul>
-<li>紧耦合：依赖查找方法使代码紧密耦合。如果改变了资源，我们需要在代码中执行大量的修改。</li>
-</ul>
-<h5 id="Dependency-Injection-依赖注入"><a href="#Dependency-Injection-依赖注入" class="headerlink" title="Dependency Injection(依赖注入)"></a>Dependency Injection(依赖注入)</h5><p>依赖注入是一种消除程序依赖的设计模式。在这种情况下，我们从外部源(如XML文件)提供信息。它使我们的代码松散耦合，易于测试。在这种情况下，我们将代码编写为</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span></span>&#123;  </span><br><span class="line">	Address address;   </span><br><span class="line">	Employee(Address address)&#123;  </span><br><span class="line">		<span class="keyword">this</span>.address=address;  </span><br><span class="line">	&#125;  </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAddress</span><span class="params">(Address address)</span></span>&#123;  </span><br><span class="line">		<span class="keyword">this</span>.address=address;  </span><br><span class="line">	&#125;    </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
-<p>在这种情况下，Address类的实例由外部资源（例如XML文件）通过构造函数或setter方法提供</p>
-<h5 id="在Spring框架中执行依赖注入的两种方法"><a href="#在Spring框架中执行依赖注入的两种方法" class="headerlink" title="在Spring框架中执行依赖注入的两种方法"></a>在Spring框架中执行依赖注入的两种方法</h5><h6 id="通过构造函数"><a href="#通过构造函数" class="headerlink" title="通过构造函数"></a>通过构造函数</h6><blockquote>
-<p>我们可以通过构造函数注入依赖。<bean>的<constructor-arg>子元素用于构造函数注入，我们可以注入</p>
-<ul>
-<li>初始值</li>
-<li>依赖对象</li>
-<li>集合数据</li>
-</ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;  </span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;  </span><br><span class="line">	<span class="keyword">private</span> String name;  </span><br><span class="line">  </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">()</span> </span>&#123;System.out.println(<span class="string">&quot;def cons&quot;</span>);&#125;  </span><br><span class="line">  </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;<span class="keyword">this</span>.id = id;&#125;  </span><br><span class="line">  </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">(String name)</span> </span>&#123;  <span class="keyword">this</span>.name = name;&#125;  </span><br><span class="line">  </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">(<span class="keyword">int</span> id, String name)</span> </span>&#123;  </span><br><span class="line">    	<span class="keyword">this</span>.id = id;  </span><br><span class="line">    	<span class="keyword">this</span>.name = name;  </span><br><span class="line">	&#125;    </span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;  </span><br><span class="line">    	System.out.println(id+<span class="string">&quot; &quot;</span>+name);  </span><br><span class="line">	&#125;   </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
-<p>applicationContext.xml</p>
-<blockquote>
-<p>我们通过这个文件向bean提供信息。constructor-arg元素调用构造函数。在下面这种情况下，将调用int类型参数的构造函数。constructor-arg元素的value属性将分配指定的值。type属性指定将调用int形参构造函数</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:p</span>=<span class="string">&quot;http://www.springframework.org/schema/p&quot;</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://www.springframework.org/schema/beans  </span></span></span><br><span class="line"><span class="tag"><span class="string">                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd&quot;</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;e&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.javatpoint.Employee&quot;</span>&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;10&quot;</span> <span class="attr">type</span>=<span class="string">&quot;int&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span>  </span><br></pre></td></tr></table></figure>
-<p>Test.java</p>
-<blockquote>
-<p>这个类从applicationContext.xml文件中获取bean，并调用show方法</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;    </span><br><span class="line">        Resource r=<span class="keyword">new</span> ClassPathResource(<span class="string">&quot;applicationContext.xml&quot;</span>);  </span><br><span class="line">        BeanFactory factory=<span class="keyword">new</span> XmlBeanFactory(r);  </span><br><span class="line">          </span><br><span class="line">        Employee s=(Employee)factory.getBean(<span class="string">&quot;e&quot;</span>);  </span><br><span class="line">        s.show();       </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
-<p>output:10 null</p>
-<p>注入字符串类型的值</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">....  </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;e&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.javatpoint.Employee&quot;</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;Sonoo&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span>  </span><br><span class="line">....  </span><br></pre></td></tr></table></figure>
-<p>output：0 Sonoo</p>
-<p>同时注入int 和 String</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">....  </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;e&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.javatpoint.Employee&quot;</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;10&quot;</span> <span class="attr">type</span>=<span class="string">&quot;int&quot;</span> &gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;Sonoo&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span>  </span><br><span class="line">....  </span><br></pre></td></tr></table></figure>
-<p>output：10 Sonoo</p>
-<p>注入依赖对象</p>
-<blockquote>
-<p>如果类之间存在HAS-A关系，则首先创建依赖对象的实例，然后将其作为主类构造函数的参数进行传递。</p>
-</blockquote>
-<p>Address.java</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Address</span> </span>&#123;  </span><br><span class="line">	<span class="keyword">private</span> String city;  </span><br><span class="line">	<span class="keyword">private</span> String state;  </span><br><span class="line">	<span class="keyword">private</span> String country;  </span><br><span class="line">  </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Address</span><span class="params">(String city, String state, String country)</span> </span>&#123;  </span><br><span class="line">    	<span class="keyword">super</span>();  </span><br><span class="line">    	<span class="keyword">this</span>.city = city;  </span><br><span class="line">    	<span class="keyword">this</span>.state = state;  </span><br><span class="line">    	<span class="keyword">this</span>.country = country;  </span><br><span class="line">	&#125;   </span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;  </span><br><span class="line">    	<span class="keyword">return</span> city+<span class="string">&quot; &quot;</span>+state+<span class="string">&quot; &quot;</span>+country;  </span><br><span class="line">	&#125;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
-<p>Employee.java</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;  </span><br><span class="line">    <span class="keyword">private</span> String name;  </span><br><span class="line">    <span class="keyword">private</span> Address address; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">()</span> </span>&#123;System.out.println(<span class="string">&quot;def cons&quot;</span>);&#125;  </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">(<span class="keyword">int</span> id, String name, Address address)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">super</span>();  </span><br><span class="line">        <span class="keyword">this</span>.id = id;  </span><br><span class="line">        <span class="keyword">this</span>.name = name;  </span><br><span class="line">        <span class="keyword">this</span>.address = address;  </span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        System.out.println(id+<span class="string">&quot; &quot;</span>+name);  </span><br><span class="line">        System.out.println(address.toString());  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
-<p>applicationContext.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">....</span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;a1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.javatpoint.Address&quot;</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;ghaziabad&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;UP&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;India&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;e&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.javatpoint.Employee&quot;</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;12&quot;</span> <span class="attr">type</span>=<span class="string">&quot;int&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;Sonoo&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">ref</span> <span class="attr">bean</span>=<span class="string">&quot;a1&quot;</span>/&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">....</span><br></pre></td></tr></table></figure>
-<p>Test.java</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </span><br><span class="line">          </span><br><span class="line">        Resource r=<span class="keyword">new</span> ClassPathResource(<span class="string">&quot;applicationContext.xml&quot;</span>);  </span><br><span class="line">        BeanFactory factory=<span class="keyword">new</span> XmlBeanFactory(r);  </span><br><span class="line">          </span><br><span class="line">        Employee s=(Employee)factory.getBean(<span class="string">&quot;e&quot;</span>);  </span><br><span class="line">        s.show();       </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
-<p>注入集合数据</p>
-<blockquote>
-<p>我们可以在spring框架中通过构造函数注入集合数据。在constructor-arg元素中可以使用三个元素</p>
-<ul>
-<li>list</li>
-<li>set</li>
-<li>map</li>
-</ul>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;q&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.javatpoint.Question&quot;</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;111&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;What is java?&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span>&gt;</span>  </span><br><span class="line">    	<span class="tag">&lt;<span class="name">list</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>Java is a programming language<span class="tag">&lt;/<span class="name">value</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>Java is a Platform<span class="tag">&lt;/<span class="name">value</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>Java is an Island of Indonasia<span class="tag">&lt;/<span class="name">value</span>&gt;</span>  </span><br><span class="line">    	<span class="tag">&lt;/<span class="name">list</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;q&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.javatpoint.Question&quot;</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;11&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;What is Java?&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">map</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">&quot;Java is a Programming Language&quot;</span>  <span class="attr">value</span>=<span class="string">&quot;Ajay Kumar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">entry</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">&quot;Java is a Platform&quot;</span> <span class="attr">value</span>=<span class="string">&quot;John Smith&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">entry</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">&quot;Java is an Island&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Raj Kumar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">entry</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;/<span class="name">map</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span>  </span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2021/02/20/Spring%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80/#more">more >></a>
+        
       
 
       
@@ -315,90 +249,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h5 id="锁的基本概念"><a href="#锁的基本概念" class="headerlink" title="锁的基本概念"></a>锁的基本概念</h5><p>​    锁是计算机协调多个进程或线程并发访问某一资源的机制。在数据库中，除传统的计算资源（如CPU、RAM、I/O等）的争用外，数据也是一种供许多用户共享的资源。如何保证数据并发访问的一致性、有效性是所有数据库必须解决的问题，所冲突也是影响数据库并发访问性能的一个重要因素。从这个角度来说，锁对数据库而言尤其重要，也更加复杂。</p>
-<h5 id="MySQL的锁机制"><a href="#MySQL的锁机制" class="headerlink" title="MySQL的锁机制"></a>MySQL的锁机制</h5><p>​    MySQL的锁机制比较简单，其最显著的特点是不同的存储引擎支持不同的锁机制。比如，MyISAM和MEMORY存储引擎采用的是表级锁（table-level locking）；InnoDB存储引擎既支持行级锁（row-level locking），也支持表级锁，但默认情况下是采用行级锁。</p>
-<ul>
-<li>表级锁：开销小，加锁快；不会出现死锁；锁定粒度大，发生冲突的概率最高，并发度最低。</li>
-<li>行级锁：开销大，加锁慢；会出现死锁；锁定粒度最小，发生冲突的概率最低，并发度最高。</li>
-</ul>
-<p>​    仅从锁的角度来说：表级锁更适合以查询为主，只有少数按索引条件更新数据的应用，如web应用；而行级锁则更适合有大量按索引条件并发更新少量不同数据，同时又有并发查询的应用，如一些在线事务处理系统。</p>
-<h6 id="MyISAM表锁"><a href="#MyISAM表锁" class="headerlink" title="MyISAM表锁"></a>MyISAM表锁</h6><p>MySQL的表级锁有两种模式：<strong>表共享读锁（Table Read Lock）</strong>和<strong>表独占写锁（Table Write Lock）</strong>。</p>
-<p>对MyISAM表的读操作，不会阻塞其他用户对同一表得读请求，但会阻塞对同一表得写请求；</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;获取锁的read锁定</span><br><span class="line">lock table mytable read;</span><br><span class="line">&#x2F;&#x2F;释放锁</span><br><span class="line">unlock tables;</span><br></pre></td></tr></table></figure>
-<p>对MyISAM锁的写操作，则会阻塞其他用户对同一表的读、写请求。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lock table mytable write;</span><br></pre></td></tr></table></figure>
-<p>注意：</p>
-<p>MyISAM在执行查询语句之前，会自动给涉及的所有表加读锁，在执行更新操作前，会自动给涉及的表加写锁，这个过程并不需要用户的干预，因此用户一般不会使用命令来显式加锁。</p>
-<h6 id="InnoDB行锁模式及加锁方法"><a href="#InnoDB行锁模式及加锁方法" class="headerlink" title="InnoDB行锁模式及加锁方法"></a>InnoDB行锁模式及加锁方法</h6><p>​    **共享锁(S)**：又称读锁，允许一个事务去读一行记录，阻止其他事务获得相同数据集的排他锁。若事务T对数据对象A加上S锁，则事务T可以读A但不能修改A，其他事务只能对A加S锁，而不能加X锁，直到T释放A上的S锁。这保证了其他事务可以读A，但是在T释放A上的S锁之前不能对A做任何修改。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select ... lock in share mode</span><br></pre></td></tr></table></figure>
-<p>​    **排他锁(X)**：又称写锁，允许获取排他锁的事务更新数据，阻止其他事务获得相同数据集的共享锁和排他锁。若事务T对数据对象A加上X锁，则事务T可以读A也可以修改A，其他事务不能再对A加任何锁，直到T释放A上的锁。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select ... for update</span><br></pre></td></tr></table></figure>
-<p>tips：MySQL InnoDB引擎默认的修改数据语句：update、delete、insert都会自动给涉及的数据加上排他锁，select语句默认不会加任何锁类型，所以加过排他锁的数据行在其他事务中是不能修改数据的，也不能通过for update和lock in share mode锁的方式查询数据，但是可以直接通过select … from …查询数据，因为普通查询没有任何锁机制。</p>
-<h6 id="InnoDB行锁实现方式"><a href="#InnoDB行锁实现方式" class="headerlink" title="InnoDB行锁实现方式"></a>InnoDB行锁实现方式</h6><p>​    InnoDB行锁是通过给<strong>索引</strong>上的索引项加锁来实现的。InnoDB这种行锁实现特点意味着：只有通过索引条件检索数据，InnoDB才使用行级锁，<strong>否则，InnoDB将使用表锁</strong>！</p>
-<h6 id="InnoDB表锁模式"><a href="#InnoDB表锁模式" class="headerlink" title="InnoDB表锁模式"></a>InnoDB表锁模式</h6><blockquote>
-<p>为了实现多粒度的锁机制，InnoDB 还有两种内部使用的 <strong>意向锁</strong> ，由 InnoDB 自动添加，且都是表级别的锁。</p>
-</blockquote>
-<ul>
-<li><strong>意向共享锁</strong> （IS）：事务即将给表中的各个行设置共享锁，事务给数据行加 S 锁前必须获得该表的 IS 锁。</li>
-<li><strong>意向排他锁</strong> （IX）：事务即将给表中的各个行设置排他锁，事务给数据行加 X 锁前必须获得该表 IX 锁。</li>
-</ul>
-<p>意向锁的主要目的是为了使得 <strong>行锁</strong> 和 <strong>表锁</strong> 共存。</p>
-<p>当再向一个表添加表级X锁的时候</p>
-<ul>
-<li>如果没有意向锁的话，则需要遍历所有整个表判断是否有行锁的存在，以免发生冲突</li>
-<li>如果有了意向锁，只需要判断该意向锁与即将添加的表级锁是否兼容即可。因为意向锁的存在代表了，有行级锁的存在或者即将有行级锁的存在。因而无需遍历整个表，即可获取结果</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left"><strong>锁类型</strong></th>
-<th align="left"><strong>X</strong></th>
-<th align="left"><strong>IX</strong></th>
-<th align="left"><strong>S</strong></th>
-<th align="left"><strong>IS</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><strong>X</strong></td>
-<td align="left">冲突</td>
-<td align="left">冲突</td>
-<td align="left">冲突</td>
-<td align="left">冲突</td>
-</tr>
-<tr>
-<td align="left"><strong>IX</strong></td>
-<td align="left">冲突</td>
-<td align="left">兼容</td>
-<td align="left">冲突</td>
-<td align="left">兼容</td>
-</tr>
-<tr>
-<td align="left"><strong>S</strong></td>
-<td align="left">冲突</td>
-<td align="left">冲突</td>
-<td align="left">兼容</td>
-<td align="left">兼容</td>
-</tr>
-<tr>
-<td align="left"><strong>IS</strong></td>
-<td align="left">冲突</td>
-<td align="left">兼容</td>
-<td align="left">兼容</td>
-<td align="left">兼容</td>
-</tr>
-</tbody></table>
-<h6 id="行锁的算法"><a href="#行锁的算法" class="headerlink" title="行锁的算法"></a>行锁的算法</h6><p>InnoDB 存储引擎使用三种行锁的算法用来满足相关事务隔离级别的要求。</p>
-<ul>
-<li><p><strong>Record Locks</strong></p>
-<p>记录锁是索引记录上的锁。例如，SELECT c1 FROM t WHERE c1 = 10 For UPDATE;防止任何其他事务插入、更新或删除t.c1值为10的行。记录锁总是锁定索引记录，即使一个表没有定义索引。在这种情况下，InnoDB会创建一个隐藏的聚集索引，并使用这个索引来锁定记录。</p>
-</li>
-<li><p><strong>Gap Locks</strong></p>
-<p>间隙锁定是对索引记录之间的间隙的锁定，或者是对第一条索引记录之前或最后一条索引记录之后的范围的锁定。 例如，SELECT c1 FROM t WHERE c1 BETWEEN 10 and 20 For UPDATE;防止其他事务向列t.c1插入值15，无论该列中是否已经有这样的值，因为范围内所有现有值之间的间隙都被锁定了。</p>
-</li>
-<li><p><strong>Next-key Locks</strong></p>
-<p>该锁就是 Record Locks 和 Gap Locks 的组合，即锁定一个范围并且锁定该记录本身。InnoDB 使用 Next-key Locks 解决幻读问题。需要注意的是，如果索引有唯一属性，则 InnnoDB 会自动将 Next-key Locks 降级为 Record Locks。举个例子，如果一个索引有 1, 3, 5 三个值，则该索引锁定的区间为 <code>(-∞,1], (1,3], (3,5], (5,+ ∞)</code> 。</p>
-</li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2021/02/19/MySQL%E7%9A%84%E9%94%81%E6%9C%BA%E5%88%B6/#more">more >></a>
+        
       
 
       
