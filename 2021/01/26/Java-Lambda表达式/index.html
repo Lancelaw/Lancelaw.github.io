@@ -5,25 +5,25 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://example.com">
+  <link rel="dns-prefetch" href="https://lancelaw.github.io">
   <title>Java Lambda表达式 | lancelaw的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="含义Lambda 表达式，也可称为闭包，它是推动 Java 8 发布的最重要新特性。 Lambda 表达式是使用最小可能语法编写的函数定义：  Lambda 表达式产生函数，而不是类。 虽然在 JVM（Java Virtual Machine，Java 虚拟机）上，一切都是类，但是幕后有各种操作执行让 Lambda 看起来像函数 —— 作为程序员，你可以高兴地假装它们“就是函数”。  Lambda">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java Lambda表达式">
-<meta property="og:url" content="http://example.com/2021/01/26/Java-Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
+<meta property="og:url" content="https://lancelaw.github.io/2021/01/26/Java-Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
 <meta property="og:site_name" content="lancelaw的博客">
 <meta property="og:description" content="含义Lambda 表达式，也可称为闭包，它是推动 Java 8 发布的最重要新特性。 Lambda 表达式是使用最小可能语法编写的函数定义：  Lambda 表达式产生函数，而不是类。 虽然在 JVM（Java Virtual Machine，Java 虚拟机）上，一切都是类，但是幕后有各种操作执行让 Lambda 看起来像函数 —— 作为程序员，你可以高兴地假装它们“就是函数”。  Lambda">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/pic/image-20210126163719191.png">
-<meta property="og:image" content="http://example.com/pic/image-20210126163930323.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210126163719191.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210126163930323.png">
 <meta property="article:published_time" content="2021-01-26T04:28:53.000Z">
 <meta property="article:modified_time" content="2021-01-26T09:00:19.585Z">
 <meta property="article:author" content="Lancelaw">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="lambda">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/pic/image-20210126163719191.png">
+<meta name="twitter:image" content="https://lancelaw.github.io/pic/image-20210126163719191.png">
   
     <link rel="alternative" href="/atom.xml" title="lancelaw的博客" type="application/atom+xml">
   
@@ -55,8 +55,10 @@
 			<img src="/assets/me.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/"></a></h1>
+		  <h1 class="header-author"><a href="/">Lancelaw</a></h1>
 		</hgroup>
+		
+		<p class="header-subtitle">Stay Hungry, Stay Foolish</p>
 		
 
 		<nav class="header-menu">
@@ -97,8 +99,10 @@
 				<img src="/assets/me.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author"></h1>
+			  <h1 class="header-author js-header-author">Lancelaw</h1>
 			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>Stay Hungry, Stay Foolish<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -236,57 +240,6 @@
       
 
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/01/26/Java-Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
       <div class="clearfix"></div>
     </div>
   </div>
@@ -383,7 +336,7 @@
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
