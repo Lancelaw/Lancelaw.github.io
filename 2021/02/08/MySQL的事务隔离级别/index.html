@@ -15,33 +15,33 @@
 <meta property="og:site_name" content="lancelaw的博客">
 <meta property="og:description" content="事务的四个特性原子性 事务作为一个整体被执行，包含在其中的对数据库的操作要么全部被执行，要么都不执行">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208160243851.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208161433751.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208161713336.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208161922542.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208162910729.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208163552973.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208163658104.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208163909621.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208164930499.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208165827426.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208170004650.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208172245639.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208172612758.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208172949290.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208173105936.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208210729495.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208210626754.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208211144738.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208211225778.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208160243851.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208161433751.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208161713336.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208161922542.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208162910729.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208163552973.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208163658104.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208163909621.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208164930499.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208165827426.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208170004650.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208172245639.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208172612758.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208172949290.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208173105936.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208210729495.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208210626754.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208211144738.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208211225778.png">
 <meta property="article:published_time" content="2021-02-08T07:15:28.000Z">
-<meta property="article:modified_time" content="2021-02-19T15:30:04.543Z">
+<meta property="article:modified_time" content="2021-03-01T07:34:29.407Z">
 <meta property="article:author" content="Lancelaw">
 <meta property="article:tag" content="数据库">
 <meta property="article:tag" content="事务">
 <meta property="article:tag" content="隔离级别">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208160243851.png">
+<meta name="twitter:image" content="https://lancelaw.github.io/pic/image-20210208160243851.png">
   
     <link rel="alternative" href="/atom.xml" title="lancelaw的博客" type="application/atom+xml">
   
@@ -214,55 +214,55 @@
 </blockquote>
 <p>测试(MySQL版本 8.0.20)：</p>
 <p>Step 1：打开一个客户端A，设置当前事务模式的隔离级别为READ UNCOMMITTED，查询表t_user的初始值</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208160243851.png" alt="image-20210208160243851"></p>
+<p><img src="/pic/image-20210208160243851.png" alt="img"></p>
 <p>Step 2：在客户端A的事务提交之前,打开另一个客户端B，设置隔离级别为READ UNCOMMITTED，更新t_user</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208161433751.png" alt="image-20210208161433751"></p>
+<p><img src="/pic/image-20210208161433751.png" alt="img"></p>
 <p>Step 3：此时，虽然客户端B的事务还没提交，但是客户端A就可以查询到B已经更新的数据：</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208161713336.png" alt="image-20210208161713336"></p>
+<p><img src="/pic/image-20210208161713336.png" alt="img"></p>
 <p>Step 4： 一旦客户端B的事务因为某种原因回滚，所有的操作都将会被撤销，数据恢复，那客户端A查询到的数据其实就是脏数据：</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208161922542.png" alt="image-20210208161922542"></p>
+<p><img src="/pic/image-20210208161922542.png" alt="img"></p>
 <p>由此可见，A事务中可以读取到B事务未修改的数据，发生<strong>赃读</strong></p>
 <h6 id="READ-COMMITTED（读提交、不可重复读）"><a href="#READ-COMMITTED（读提交、不可重复读）" class="headerlink" title="READ COMMITTED（读提交、不可重复读）"></a>READ COMMITTED（读提交、不可重复读）</h6><blockquote>
 <p>一次事务中可以读取另一个已提交的事务，但多次读取会造成不一样的结果，此现象称为不可重复读问题</p>
 </blockquote>
 <p>测试：</p>
 <p>Step 1：打开一个客户端A，并设置当前事务模式为READ COMMITTED（未提交读），查询表user的初始值：</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208162910729.png" alt="image-20210208162910729"></p>
+<p><img src="/pic/image-20210208162910729.png" alt="img"></p>
 <p>Step 2：在客户端A的事务提交之前，打开另一个客户端B，更新表user：</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208163552973.png" alt="image-20210208163552973"></p>
+<p><img src="/pic/image-20210208163552973.png" alt="img"></p>
 <p>Step 3：这时，客户端B的事务还没提交，客户端A不能查询到B已经更新的数据，解决了脏读问题</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208163658104.png" alt="image-20210208163658104"></p>
+<p><img src="/pic/image-20210208163658104.png" alt="img"></p>
 <p>Step 4：客户端B的事务用COMMIT命令提交之后，再查看一下客户端A的数据</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208163909621.png" alt="image-20210208163909621"></p>
+<p><img src="/pic/image-20210208163909621.png" alt="img"></p>
 <p>由此可见，A事务执行与上一步相同的查询，结果却与上一步不一致，即产生了<strong>不可重复读</strong>的问题</p>
 <h6 id="REPEATABLE-READ（可重复读、幻读）"><a href="#REPEATABLE-READ（可重复读、幻读）" class="headerlink" title="REPEATABLE READ（可重复读、幻读）"></a>REPEATABLE READ（可重复读、幻读）</h6><blockquote>
 <p>在同一个事务内的查询都是事务开始时刻一致的，InnoDB默认级别。在SQL标准中，该隔离级别消除了不可重复读，但是还存在幻读</p>
 </blockquote>
 <p>Step 1：打开一个客户端A，并设置当前事务模式为REPEATABLE READ，查询表user的初始值</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208164930499.png" alt="image-20210208164930499"></p>
+<p><img src="/pic/image-20210208164930499.png" alt="img"></p>
 <p>Step 2：在客户端A的事务提交之前，打开另一个客户端B，更新表user，并提交：</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208165827426.png" alt="image-20210208165827426"></p>
+<p><img src="/pic/image-20210208165827426.png" alt="img"></p>
 <p>Step 3：在客户端A执行步骤（1）的查询，两次的结果一致，所以没有出现不可重复读问题</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208170004650.png" alt="image-20210208170004650"></p>
+<p><img src="/pic/image-20210208170004650.png" alt="img"></p>
 <p>Step 4：客户端A 重新开启一个事务，查询t_user表数据</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208172245639.png" alt="image-20210208172245639"></p>
+<p><img src="/pic/image-20210208172245639.png" alt="img"></p>
 <p>Step 5：客户端B重新开启一个事务，添加一条记录并提交</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208172612758.png" alt="image-20210208172612758"></p>
+<p><img src="/pic/image-20210208172612758.png" alt="img"></p>
 <p>Step 6：切换到客户端A，查询t_user表，还是只有两条数据，证明该隔离级别下已经已经读取不到别的已提交的事务</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208172949290.png" alt="image-20210208172949290"></p>
+<p><img src="/pic/image-20210208172949290.png" alt="img"></p>
 <p>Step 7：此时接着在 客户端A 插入一条数据</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208173105936.png" alt="image-20210208173105936"></p>
+<p><img src="/pic/image-20210208173105936.png" alt="img"></p>
 <p>明明在第 6 步没有数据，为什么在这里会报错呢？其实这就是该隔离级别下可能产生的问题，MySQL 称之为 <strong>幻读</strong> </p>
 <h6 id="SERIALIZABLE（串行化）"><a href="#SERIALIZABLE（串行化）" class="headerlink" title="SERIALIZABLE（串行化）"></a>SERIALIZABLE（串行化）</h6><blockquote>
 <p>最高的隔离级别，在该隔离级别下事务都是串行顺序执行的，MySQL 数据库的 InnoDB 引擎会给读操作隐式加一把读共享锁，从而避免了脏读、不可重读复读和幻读问题。</p>
 </blockquote>
 <p>Step 1：打开一个客户端A，并设置当前事务模式为serializable，查询表user的初始值</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208210729495.png" alt="image-20210208210729495"></p>
+<p><img src="/pic/image-20210208210729495.png" alt="img"></p>
 <p>Step 2：打开一个客户端B，并设置当前事务模式为serializable，插入一条记录报错，表被锁了插入失败，mysql中事务隔离级别为serializable时会锁表，因此不会出现幻读的情况。</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208210626754.png" alt="image-20210208210626754"></p>
+<p><img src="/pic/image-20210208210626754.png" alt="img"></p>
 <p>Step 3：一旦客户端A的事务提交，客户端B的插入操作会立马执行成功，否则会一直卡住，直到超时。</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208211144738.png" alt="image-20210208211144738"></p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208211225778.png" alt="image-20210208211225778"></p>
+<p><img src="/pic/image-20210208211144738.png" alt="img"></p>
+<p><img src="/pic/image-20210208211225778.png" alt="img"></p>
 <h6 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h6><table>
 <thead>
 <tr>
