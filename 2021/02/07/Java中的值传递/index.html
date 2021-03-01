@@ -15,18 +15,18 @@
 <meta property="og:site_name" content="lancelaw的博客">
 <meta property="og:description" content="值传递（pass by value）是指在调用函数时将实际参数复制一份传递到函数中，这样在函数中如果对参数进行修改，将不会影响到实际参数。 在Java所有的参数传递中，不管是基本类型还是引用类型，都是值传递。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210207234521931.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208004848349.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208000612471.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208001536149.png">
-<meta property="og:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210208003408144.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210207234521931.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208004848349.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208000612471.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208001536149.png">
+<meta property="og:image" content="https://lancelaw.github.io/pic/image-20210208003408144.png">
 <meta property="article:published_time" content="2021-02-07T11:28:53.000Z">
-<meta property="article:modified_time" content="2021-02-07T17:23:07.083Z">
+<meta property="article:modified_time" content="2021-03-01T07:49:35.218Z">
 <meta property="article:author" content="Lancelaw">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="值传递">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:/Users/16992/AppData/Roaming/Typora/typora-user-images/image-20210207234521931.png">
+<meta name="twitter:image" content="https://lancelaw.github.io/pic/image-20210207234521931.png">
   
     <link rel="alternative" href="/atom.xml" title="lancelaw的博客" type="application/atom+xml">
   
@@ -175,25 +175,25 @@
 <p>上述代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">Num num = <span class="keyword">new</span> Num();</span><br><span class="line">num.setValue(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
 <p>如图所示：</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210207234521931.png" alt="image-20210207234521931"></p>
+<p><img src="/pic/image-20210207234521931.png" alt="img"></p>
 <p>对于赋值</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">20</span>;</span><br><span class="line">Num num2 = num;</span><br></pre></td></tr></table></figure>
 <p>如图所示：</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208004848349.png" alt="image-20210208004848349"></p>
+<p><img src="/pic/image-20210208004848349.png" alt="img"></p>
 <p>而方法调用时，参数的传递基本上就是赋值操作</p>
 <ul>
 <li>方法参数和局部变量在jvm中的储存方法是相同的，都是在栈上开辟空间来储存的，随着进入方法开辟，退出方法回收。</li>
 </ul>
 <p>对于上述的changeInt(int a) 方法，被调用时，它的形式参数 a 作为局部变量，会被赋值为实参的值，即：</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208000612471.png" alt="image-20210208000612471"></p>
+<p><img src="/pic/image-20210208000612471.png" alt="img"></p>
 <p>所以在方法内对a的操作不会影响的实际参数。</p>
 <p>对于上述的changeNum(Num n)方法，被调用时，它的形式参数 n 作为局部变量，也会被赋值为实参的值，即：</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208001536149.png" alt="image-20210208001536149"></p>
+<p><img src="/pic/image-20210208001536149.png" alt="img"></p>
 <p>如上图所示，局部变量n也获得了与实参num一样的值，所以它们都指向了同一个对象，这也造成了在方法内对n所指向的对象作修改时，实参也会变化的结果，但这是值传递而不是引用传递。（tips: 在Java中操作对象，只有通过引用操作这一种途径。某种意义上，Java中是不能直接操作对象的。)</p>
 <p>如果changeNum(Num n)方法变为：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">changeNum</span><span class="params">(Num n)</span> </span>&#123;</span><br><span class="line">    n = <span class="keyword">new</span> Num();</span><br><span class="line">    n.setValue(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>则表示：</p>
-<p><img src="C:\Users\16992\AppData\Roaming\Typora\typora-user-images\image-20210208003408144.png" alt="image-20210208003408144"></p>
+<p><img src="/pic/image-20210208003408144.png" alt="img"></p>
 <p>此时，方法内部对n所指向的对象的修改与实际参数无关，所以</p>
 <p>output:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">before changeInt method:  a = 10</span><br><span class="line">after changeInt method:  a = 10</span><br><span class="line">before changeNum method:  num.value = 10</span><br><span class="line">after changeNum method:  num.value = 10</span><br></pre></td></tr></table></figure>
